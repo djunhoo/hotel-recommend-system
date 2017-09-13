@@ -8,7 +8,6 @@ var urls = [];
 urls.push("https://www.goodchoice.kr/product/detail?ano=23401");
 urls.push("https://www.goodchoice.kr/product/detail?ano=3805");
 urls.push("https://www.goodchoice.kr/product/detail?ano=3806");
-urls.push("https://www.goodchoice.kr/product/detail?ano=21000");
 
 console.log(urls);
 urls.forEach(function(url){
@@ -27,8 +26,15 @@ urls.forEach(function(url){
 	    var myHotel = new Hotel();
 	    myHotel.name = strName[0].data;
 	    myHotel.address = strAddress.children[0].data;
-	    for(var i=0; i<strlength; i++) {
-	    	myHotel.img_url.push(strimage[i].attribs['data-src']);
+	    if(strlength > 5) {
+	    	for(var i=0; i<5; i++) {
+	    		myHotel.img_url.push(strimage[i].attribs['data-src']);
+	    	}
+	    }
+	    else {
+	    	for(var i=0; i<strlength; i++) {
+	    		myHotel.img_url.push(strimage[i].attribs['data-src']);
+	    	}
 	    }
 	    myHotel.save(function(err, doc) {
 	    	if(err) console.log(err);
