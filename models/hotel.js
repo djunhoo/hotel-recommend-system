@@ -9,11 +9,13 @@ autoIncrement.initialize(db);
 var hotelSchema = new Schema({
 	name: String,
 	address: String,
-	img_url: {
+	mainImg: String,
+	roomImg: {
 	  type:	[String],
 	  validate: [arrayLimit, '{PATH} exceeds the limit of 5']
 	},
-	phonenumber: String
+	phonenumber: String,
+	point: Number
 });
 
 function arrayLimit(val) {
