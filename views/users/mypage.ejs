@@ -21,7 +21,77 @@
         <% include ../layout/main/sidebar %>
         <div id="main">
             <br>
-            <% include ../layout/userInfo %>
+            <div class="">
+                <!-- left column -->
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="text-center">
+                            <% if(user.profImg) { %>
+                                <img src="<%= user.profImg %>" class="img-circle img-thumbnail" width="250" hegiht="250">
+                            <% } else { %>
+                                <img src="/images/default.png" class="img-circle img-thumbnail" width="250" height="250">
+                            <% } %>
+                    </div>
+                </div>
+                <!-- edit form column -->
+                <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+                    <h3>상세 정보 페이지</h3>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">이메일</label>
+                            <div class="col-lg-8">
+                                <br>
+                                <%= user.email %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">이름</label>
+                            <div class="col-lg-8">
+                                <br>
+                                <%= user.name %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">직업</label>
+                            <div class="col-lg-8">
+                                <br>
+                                <%= user.job.jobName %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">성별</label>
+                            <div class="col-lg-8">
+                                <br>
+                                <%= user.sex %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">나이</label>
+                            <div class="col-lg-8">
+                                <br>
+                                <%= user.age %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">연애 유무</label>
+                            <div class="col-lg-8">
+                                <br>
+                                <% if(user.isLove) { %>
+                                    O
+                                <% } else { %>
+                                    X
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">소득 분위</label>
+                            <div class="col-lg-8">
+                                <br>
+                                <%= user.incomeLevel %>분위
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
             <br>
             <% include ../layout/wentHotel %>
         </div>
