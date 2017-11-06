@@ -33,7 +33,7 @@ router.post('/search', function(req, res, next) {
             address: new RegExp(name, "i")
         }
     }
-    Hotel.find({name: new RegExp(name, "i")})
+    Hotel.find(options)
         .limit(10)
         .exec(function(err, docs) {
             if(err) console.log('err=', err);
