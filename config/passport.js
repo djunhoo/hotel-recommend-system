@@ -69,6 +69,7 @@ module.exports = function(passport) {
                         newUser.age = req.body.age;
                         newUser.incomeLevel = req.body.incomeLevel;
                         newUser.isLove = req.body.isLove;
+                        newUser.sex = req.body.sex;
                         newUser.token = jwt.encode(email, configAuth.jwt_secret);
                         console.log('newUser=', newUser);
                         newUser.save(function(err) {

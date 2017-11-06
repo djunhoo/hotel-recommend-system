@@ -1,0 +1,14 @@
+<h3>&nbsp;내가 가본 호텔</h3>
+<ul class="card-list">
+    <% for(var i=0; i<user.wentHotel.length; i++) { %>
+        <li class="card">
+            <a class="card-image" href="/webtoon/<%= user.wentHotel[i]._id %>" target="_blank" style="background-image: url(<%= user.wentHotel[i].mainImg %>);" data-image-full="<%= user.wentHotel[i].mainImg %>">
+    			<img src="<%= user.wentHotel[i].mainImg %>" alt="Psychopomp" />
+    		</a>
+            <a class="card-description" href="#>">
+                <h2><%= user.wentHotel[i].name %></h2>
+                <p><%= user.wentHotel[i].address %></p>
+            </a>
+        </li>
+    <% } %>
+</ul>

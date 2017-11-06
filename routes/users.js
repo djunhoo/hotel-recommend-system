@@ -60,6 +60,21 @@ module.exports = function(passport) {
         });
     });
 
+    router.get('/mypage', isLoggedIn, function(req, res, next) {
+        User.findOne({_id: req.user._id})
+        .populate('job')
+        .exec()
+        .then(function(user) {
+            console.log('user=', user);
+            res.render('users/mypage', {
+                message: req.flash('loginMessage'),
+                success: req.flash('successMessage'),
+                title: '로그인',
+                user: user
+            });
+        });
+
+    });
 
     router.get('/login', function(req, res, next) {
         res.render('users/login', {
