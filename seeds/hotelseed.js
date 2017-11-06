@@ -7,7 +7,7 @@ var Hotel = require('../models/hotel').hotelModel;
 var Url = require('../models/url').urlModel;
 
 
-Url.find({}, function(err, urls) {
+Url.find({category: "모텔"}, function(err, urls) {
     urls.forEach(function(url) {
         var options = {
             url: url.url,
@@ -24,7 +24,7 @@ Url.find({}, function(err, urls) {
 				var strimage = $('.swiper-wrapper').find('img')
 				var strlength = $('.swiper-wrapper').find('img').length;
 				var strPoint = $('.score_cnt').find('span')[0].children[0].data;
-				var strPhoneNumber = $('.call')[0].attribs.href.split(':')[1];
+				//var strPhoneNumber = $('.call')[0].attribs.href.split(':')[1];
 			} catch(err) {
 				console.log('err=', err);
 				return;
@@ -41,14 +41,14 @@ Url.find({}, function(err, urls) {
                     myHotel.mainImg = url.mainImg;
                     myHotel.category = url.category;
                     myHotel.point = strPoint;
-                    myHotel.phonenumber = strPhoneNumber
+                    // myHotel.phonenumber = strPhoneNumber
                     if (strlength > 5) {
                         for (var i = 0; i < 5; i++) {
-                            myHotel.img_url.push(strimage[i].attribs['data-src']);
+                            myHotel.roomImg.push(strimage[i].attribs['data-src']);
                         }
                     } else {
                         for (var i = 0; i < strlength; i++) {
-                            myHotel.img_url.push(strimage[i].attribs['data-src']);
+                            myHotel.roomImg.push(strimage[i].attribs['data-src']);
                         }
                     }
                     myHotel.save(function(err, doc) {
