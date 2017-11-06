@@ -77,7 +77,8 @@ module.exports = function(passport) {
                 message: req.flash('loginMessage'),
                 success: req.flash('successMessage'),
                 title: '회원 가입',
-                jobs: doc
+                jobs: doc,
+                user: req.user
             });
         });
 
