@@ -1,6 +1,9 @@
 // hotel.js
 var mongoose = require('mongoose');
 var db = require('./db');
+
+var hotelCategory = require('./hotelCategory').hotelCategorySchema;
+var random = require('mongoose-simple-random');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 var autoIncrement = require('mongoose-auto-increment');
@@ -15,12 +18,22 @@ var hotelSchema = new Schema({
 	  validate: [arrayLimit, '{PATH} exceeds the limit of 5']
 	},
 	phonenumber: String,
-	point: Number
+	point: Number,
+	categorys: {
+		type: Number,
+
+	}
 });
 
 function arrayLimit(val) {
 	return val.length <= 5;
 }
+
+hotelSchema.index({
+    name: 'text',
+    address: 'text',
+    mainImg: 'text'
+});
 
 hotelSchema.plugin(autoIncrement.plugin, {model: 'hotel', field: '_id', startAt:1, incrementBy: 1});
 
