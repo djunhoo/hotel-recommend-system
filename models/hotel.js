@@ -19,10 +19,7 @@ var hotelSchema = new Schema({
 	},
 	phonenumber: String,
 	point: Number,
-	categorys: {
-		type: Number,
-
-	}
+	category: String
 });
 
 function arrayLimit(val) {
@@ -36,6 +33,7 @@ hotelSchema.index({
 });
 
 hotelSchema.plugin(autoIncrement.plugin, {model: 'hotel', field: '_id', startAt:1, incrementBy: 1});
+hotelSchema.plugin(random);
 
 var hotelModel = db.model('hotel', hotelSchema);
 

@@ -62,7 +62,7 @@ module.exports = function(passport) {
 
 
     router.get('/login', function(req, res, next) {
-        res.render('user/login', {
+        res.render('users/login', {
             message: req.flash('loginMessage'),
             success: req.flash('successMessage'),
             title: '로그인',
@@ -71,11 +71,16 @@ module.exports = function(passport) {
     });
 
     router.get('/signup', function(req, res, next) {
-        res.render('user/signup', {
-            message: req.flash('loginMessage'),
-            success: req.flash('successMessage'),
-            title: '회원 가입'
+        Job.find({}, function(err, doc) {
+            console.log('job=', doc);
+            res.render('users/signup', {
+                message: req.flash('loginMessage'),
+                success: req.flash('successMessage'),
+                title: '회원 가입',
+                jobs: doc
+            });
         });
+
     });
 
     router.post('/login', passport.authenticate('local-login', {

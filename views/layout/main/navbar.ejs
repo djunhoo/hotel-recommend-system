@@ -1,0 +1,14 @@
+<div class="navbar navbar-custom navbar-fixed-top">
+    <div class="navbar-header">
+        <a href="/" class="navbar-brand">호텔 추천 시스템</a>
+    </div>
+    <div class="collapse navbar-collapse">
+        <div class="pull-right">
+            <% if(user) { %>
+                <a id="logout" href="/users/logout" class="navbar-brand">로그아웃</a>
+            <% } else { %>
+                <a id="login" href="/users/login" class="navbar-brand">로그인</a>
+            <% } %>
+        </div>
+    </div>
+</div>

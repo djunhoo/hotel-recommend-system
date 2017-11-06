@@ -34,34 +34,6 @@ var urls = [{
         src: "https://www.goodchoice.kr/product/search/1/10"
     }
 ];
-// var urls = [{
-//         src: "https://www.goodchoice.kr/product/search/2/2003"
-//     },
-//     {
-//         src: "https://www.goodchoice.kr/product/search/2/2004"
-//     },
-//     {
-//         src: "https://www.goodchoice.kr/product/search/2/2005"
-//     },
-//     {
-//         src: "https://www.goodchoice.kr/product/search/2/2006"
-//     },
-//     {
-//         src: "https://www.goodchoice.kr/product/search/2/2007"
-//     },
-//     {
-//         src: "https://www.goodchoice.kr/product/search/2/2008"
-//     },
-//     {
-//         src: "https://www.goodchoice.kr/product/search/2/2009"
-//     },
-//     {
-//         src: "https://www.goodchoice.kr/product/search/2/2010"
-//     },
-//     {
-//         src: "https://www.goodchoice.kr/product/search/2/2011"
-//     }
-// ];
 var Url = require('../models/url.js').urlModel;
 
 console.log(urls);

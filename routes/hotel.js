@@ -66,11 +66,9 @@ router.get('/:hotel_id', function(req, res, next) {
             if (err) next(err);
 
             if (!doc) {
-                res.json({
-                    err: "찾는 웹툰이 없다."
-                })
+                console.log('호텔이없음');
+                next(err);
             }
-            console.log('doc-', doc[0].link_url);
 
             if (req.user) {
                 var hotelMap = new Map();

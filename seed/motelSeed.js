@@ -4,10 +4,12 @@ var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
 var mongoose = require('mongoose');
 var Hotel = require('../models/hotel').hotelModel;
-var Url = require('../models/hotelUrl').urlModel;
+var Url = require('../models/url').urlModel;
 
 
-Url.find({category: "호텔"}, function(err, urls) {
+Url.find({
+    category: "모텔"
+}, function(err, urls) {
     urls.forEach(function(url) {
         var options = {
             url: url.url,
@@ -16,19 +18,19 @@ Url.find({category: "호텔"}, function(err, urls) {
         request(options, function(err, response, body) {
 
             if (err) return console.log('err', err);
-			try{
-				var strContents = iconv.decode(body, 'utf-8');
-				var $ = cheerio.load(strContents);
-				var strName = $('.info').find('h2')[0].children;
-				var strAddress = $('.address')[0];
-				var strimage = $('.swiper-wrapper').find('img')
-				var strlength = $('.swiper-wrapper').find('img').length;
-				var strPoint = $('.score_cnt').find('span')[0].children[0].data;
-				//var strPhoneNumber = $('.call')[0].attribs.href.split(':')[1];
-			} catch(err) {
-				console.log('err=', err);
-				return;
-			}
+            try {
+                var strContents = iconv.decode(body, 'utf-8');
+                var $ = cheerio.load(strContents);
+                var strName = $('.info').find('h2')[0].children;
+                var strAddress = $('.address')[0];
+                var strimage = $('.swiper-wrapper').find('img')
+                var strlength = $('.swiper-wrapper').find('img').length;
+                var strPoint = $('.score_cnt').find('span')[0].children[0].data;
+                //var strPhoneNumber = $('.call')[0].attribs.href.split(':')[1];
+            } catch (err) {
+                console.log('err=', err);
+                return;
+            }
 
 
             Hotel.findOne({

@@ -1,0 +1,27 @@
+<div id="sidebar" class="">
+    <div class="col-md-12">
+        <h3></h3>
+        <div id="my_info">
+            <% if(user) { %>
+                <% if(user.profImg) { %>
+                    <img src="<%= user.profImg %>" class="img-circle" width="70" height="70">
+                <% } else { %>
+                    <img src="/images/default.png" class="img-circle" width="70" height="70">
+                <% } %>
+
+                <br><br>
+                <p><b><%= user.name %></b>님 환영합니다.</p>
+            <% } else { %>
+                <p><b><a href="#">로그인</a></b>이 필요합니다.</p>
+            <% } %>
+        </div>
+        <ul class="nav nav-pills nav-stacked mypage">
+            <li><a href="/users/mypage">마이페이지</a></li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#">호텔 검색</a></li>
+            <li><a href="#">호텔 추천</a></li>
+            <li><a href="#">자유게시판</a></li>
+        </ul>
+    </div>
+</div>
