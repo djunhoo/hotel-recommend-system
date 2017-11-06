@@ -1,0 +1,39 @@
+<!-- Contenedor Principal -->
+<div class="comments-container">
+	<ul id="comments-list" class="comments-list">
+		<% for(var i=0; i<comments.length; i++) { %>
+			<li>
+				<div class="comment-main-level">
+					<!-- Avatar -->
+					<div class="comment-avatar">
+						<% if(!user) { %>
+							<img src="/images/default.png" alt="">
+						<% } %>
+						<% if(user.profImg) { %>
+							<img src="<%= user.profImg %>" alt="">
+						<% } else { %>
+							<img src="/images/default.png" alt="">
+						<% } %>
+
+					</div>
+					<!-- Contenedor del Comentario -->
+					<div class="comment-box">
+						<div class="comment-head">
+							<b style="float: left;"><%= comments[i].userId.email %>&nbsp;&nbsp;&nbsp;</b>
+							<span><%= comments[i].regdate %>&nbsp;&nbsp;</span>
+							<% for(var j=0; j<parseInt(comments[i].point); j++) { %>
+								<i class="glyphicon glyphicon-star"></i>
+							<% } %>
+							<% for(var j=0; j<parseInt(5-parseInt(comments[i].point)); j++) { %>
+								<i class="glyphicon glyphicon-star-empty"></i>
+							<% } %>
+						</div>
+						<div class="comment-content">
+							<%= comments[i].content %>
+						</div>
+					</div>
+				</div>
+			</li>
+		<% } %>
+	</ul>
+</div>
