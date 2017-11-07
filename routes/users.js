@@ -106,7 +106,7 @@ module.exports = function(passport) {
 
                 res.render('users/recommendResult', {
                     user:user,
-                    title: "웹툰 추천",
+                    title: "호텔 추천",
                     hotels: recommendHotel
                 })
 
