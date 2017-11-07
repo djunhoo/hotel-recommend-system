@@ -99,10 +99,13 @@ module.exports = function(passport) {
                                 }
                             }
                             if(!isCheck) {
-                                recommendHotel.push({
-                                    hotel: simmilarUsers[i].wentHotel[j],
-                                    userId: simmilarUsers[i]._id
-                                });
+                                if(recommendHotel.length < 4) {
+                                    recommendHotel.push({
+                                        hotel: simmilarUsers[i].wentHotel[j],
+                                        userId: simmilarUsers[i]._id
+                                    });
+                                }
+
                             }
 
                         }
