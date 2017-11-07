@@ -66,7 +66,7 @@ module.exports = function(passport) {
             location = "서울";
         console.log('location=', location);
 
-        User.find({'wentHotel.$.address': new RegExp(location, "i")}, function(err, users) {
+        User.find({'wentHotel.address': new RegExp(location, "i")}, function(err, users) {
             console.log('usr=', user.wentHotel);
             var recommendData = getRecommendData(req, users);
 
@@ -90,10 +90,18 @@ module.exports = function(passport) {
             .then(function(simmilarUsers) {
                 var recommendHotel = [];
                 for(var i=0; i<simmilarUsers.length; i++) {
-                    recommendHotel.push({
-                        hotel: simmilarUsers[i].wentHotel[0],
-                        userId: simmilarUsers[i]._id
-                    });
+                    if(simmilarUsers[i].wentHotel[1]) {
+                        recommendHotel.push({
+                            hotel: simmilarUsers[i].wentHotel[1],
+                            userId: simmilarUsers[i]._id
+                        });
+                    } else {
+                        recommendHotel.push({
+                            hotel: simmilarUsers[i].wentHotel[0],
+                            userId: simmilarUsers[i]._id
+                        });
+                    }
+
                 }
 
                 res.render('users/recommendResult', {
