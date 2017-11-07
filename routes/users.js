@@ -90,10 +90,10 @@ module.exports = function(passport) {
             .then(function(simmilarUsers) {
                 var recommendHotel = [];
                 for(var i=0; i<simmilarUsers.length; i++) {
-                    for(var j=0; j<simmilarUsers[i].wentHotel.length) {
-                        if(simmilarUsers[i].wentHotel[0].includes(location) == true ) {
+                    for(var j=0; j<simmilarUsers[i].wentHotel.length; j++) {
+                        if(simmilarUsers[i].wentHotel[j].includes(location) == true ) {
                             recommendHotel.push({
-                                hotel: simmilarUsers[i].wentHotel[0],
+                                hotel: simmilarUsers[i].wentHotel[j],
                                 userId: simmilarUsers[i]._id
                             });
                         }
