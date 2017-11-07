@@ -92,10 +92,19 @@ module.exports = function(passport) {
                 for(var i=0; i<simmilarUsers.length; i++) {
                     for(var j=0; j<simmilarUsers[i].wentHotel.length; j++) {
                         if(simmilarUsers[i].wentHotel[j].address.includes(location) == true ) {
-                            recommendHotel.push({
-                                hotel: simmilarUsers[i].wentHotel[j],
-                                userId: simmilarUsers[i]._id
-                            });
+                            var isCheck = false;
+                            for(var k=0; k<recommendHotel.length; k++) {
+                                if(simmilarUsers[i].wentHotel[j].name == recommendHotel[k].hotel.name){
+                                    icCheck = true;
+                                }
+                            }
+                            if(!isCheck) {
+                                recommendHotel.push({
+                                    hotel: simmilarUsers[i].wentHotel[j],
+                                    userId: simmilarUsers[i]._id
+                                });
+                            }
+
                         }
                     }
 
