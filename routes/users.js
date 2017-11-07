@@ -90,18 +90,14 @@ module.exports = function(passport) {
             .then(function(simmilarUsers) {
                 var recommendHotel = [];
                 for(var i=0; i<simmilarUsers.length; i++) {
-                    if(simmilarUsers[i].wentHotel[1]) {
-                        recommendHotel.push({
-                            hotel: simmilarUsers[i].wentHotel[1],
-                            userId: simmilarUsers[i]._id
-                        });
-                    } else {
-                        recommendHotel.push({
-                            hotel: simmilarUsers[i].wentHotel[0],
-                            userId: simmilarUsers[i]._id
-                        });
+                    for(var j=0; j<simmilarUsers[i].wentHotel.length) {
+                        if(simmilarUsers[i].wentHotel[0].includes(location) == true ) {
+                            recommendHotel.push({
+                                hotel: simmilarUsers[i].wentHotel[0],
+                                userId: simmilarUsers[i]._id
+                            });
+                        }
                     }
-
                 }
 
                 res.render('users/recommendResult', {
