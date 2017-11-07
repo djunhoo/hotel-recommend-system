@@ -92,10 +92,13 @@ module.exports = function(passport) {
                 for(var i=0; i<simmilarUsers.length; i++) {
                     for(var j=0; j<simmilarUsers[i].wentHotel.length; j++) {
                         if(simmilarUsers[i].wentHotel[j].includes(location) == true ) {
-                            recommendHotel.push({
-                                hotel: simmilarUsers[i].wentHotel[j],
-                                userId: simmilarUsers[i]._id
-                            });
+                            if(j == simmilarUsers[i].wentHotel.length) {
+                                recommendHotel.push({
+                                    hotel: simmilarUsers[i].wentHotel[j],
+                                    userId: simmilarUsers[i]._id
+                                });
+                            }
+
                         }
                     }
                 }
