@@ -99,7 +99,7 @@ module.exports = function(passport) {
                                 }
                             }
                             if(!isCheck) {
-                                if(recommendHotel.length < 4) {
+                                if(recommendHotel.length < 3) {
                                     recommendHotel.push({
                                         hotel: simmilarUsers[i].wentHotel[j],
                                         userId: simmilarUsers[i]._id
