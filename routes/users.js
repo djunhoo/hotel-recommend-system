@@ -66,7 +66,7 @@ module.exports = function(passport) {
             location = "서울";
         console.log('location=', location);
 
-        User.find({'wentHotel.address': new RegExp(location, "i")}, function(err, users) {
+        User.find({'wentHotel.$.address': new RegExp(location, "i")}, function(err, users) {
             console.log('usr=', user.wentHotel);
             var recommendData = getRecommendData(req, users);
 
